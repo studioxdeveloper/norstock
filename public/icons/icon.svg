@@ -1,7 +1,18 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="512" height="512" rx="108" fill="#00a79d"/>
-  <path d="M256 120L340 200L340 280L256 360L172 280L172 200L256 120Z" fill="white" fill-opacity="0.2"/>
-  <path d="M160 340L256 180L352 340" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M200 300L256 220L312 300" stroke="white" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="256" cy="380" r="20" fill="#ed9f22"/>
+  <!-- Background -->
+  <rect width="512" height="512" fill="#2A9D8F"/>
+  
+  <!-- Main circle (donut shape) -->
+  <path d="M256 96C167.634 96 96 167.634 96 256C96 344.366 167.634 416 256 416C344.366 416 416 344.366 416 256C416 167.634 344.366 96 256 96ZM256 352C202.981 352 160 309.019 160 256C160 202.981 202.981 160 256 160C309.019 160 352 202.981 352 256C352 309.019 309.019 352 256 352Z" fill="white"/>
+  
+  <!-- Cut-out gap (top-left arc removed) -->
+  <path d="M256 96C167.634 96 96 167.634 96 256L160 256C160 202.981 202.981 160 256 160V96Z" fill="#2A9D8F"/>
+  
+  <!-- Outer arc (top-left) -->
+  <path d="M168 132C132 168 108 216 108 268" stroke="white" stroke-width="48" stroke-linecap="round" fill="none"/>
+  
+  <!-- Bar chart elements -->
+  <rect x="200" y="280" width="32" height="80" fill="white"/>
+  <rect x="248" y="240" width="32" height="120" fill="white"/>
+  <rect x="296" y="200" width="32" height="160" fill="white"/>
 </svg>

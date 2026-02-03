@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion'
-import { TrendingUp, TrendingDown, ChevronRight, Bell, Plus, ArrowUpRight, ArrowDownRight } from 'lucide-react'
+import { 
+  TrendingUp, TrendingDown, ChevronRight, Bell, Plus, ArrowUpRight, ArrowDownRight
+} from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { formatCurrency, formatNumber, formatPercentage, cn } from '@/lib/utils'
 import { Header } from '@/components/Header'
+import { companyLogos, DefaultCompanyLogo } from '@/components/CompanyLogos'
 
 // Mock data
 const portfolioSummary = {
@@ -12,10 +15,10 @@ const portfolioSummary = {
 }
 
 const holdings = [
-  { id: '1', name: 'TechStart AS', shares: 500, value: 450000, change: 5.2, logo: '🚀' },
-  { id: '2', name: 'GreenEnergy Norge', shares: 200, value: 320000, change: -2.1, logo: '🌱' },
-  { id: '3', name: 'Nordic FinTech', shares: 150, value: 280000, change: 8.4, logo: '💳' },
-  { id: '4', name: 'Seafood Innovation', shares: 100, value: 200000, change: 1.3, logo: '🐟' },
+  { id: '1', name: 'TechStart AS', shares: 500, value: 450000, change: 5.2 },
+  { id: '2', name: 'GreenEnergy Norge', shares: 200, value: 320000, change: -2.1 },
+  { id: '3', name: 'Nordic FinTech', shares: 150, value: 280000, change: 8.4 },
+  { id: '4', name: 'Seafood Innovation', shares: 100, value: 200000, change: 1.3 },
 ]
 
 const recentActivity = [
@@ -92,9 +95,14 @@ export function PortfolioPage() {
                 onClick={() => navigate(`/companies/${holding.id}`)}
                 className="w-full glass rounded-2xl p-4 flex items-center gap-4 press-effect text-left"
               >
-                <div className="w-12 h-12 rounded-xl bg-slate-700/50 flex items-center justify-center text-2xl">
-                  {holding.logo}
-                </div>
+                {(() => {
+                  const Logo = companyLogos[holding.id]
+                  return Logo ? (
+                    <Logo className="w-12 h-12" />
+                  ) : (
+                    <DefaultCompanyLogo className="w-12 h-12" initials={holding.name.slice(0, 2).toUpperCase()} />
+                  )
+                })()}
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold truncate">{holding.name}</h3>
                   <p className="text-sm text-slate-400">{formatNumber(holding.shares)} aksjer</p>

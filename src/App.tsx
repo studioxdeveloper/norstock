@@ -7,6 +7,7 @@ import { CompaniesPage } from './pages/CompaniesPage'
 import { CompanyDetailPage } from './pages/CompanyDetailPage'
 import { MarketplacePage } from './pages/MarketplacePage'
 import { ProfilePage } from './pages/ProfilePage'
+import { RegisterInterestPage } from './pages/RegisterInterestPage'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -22,6 +23,7 @@ function App() {
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/companies" element={<CompaniesPage />} />
         <Route path="/companies/:id" element={<CompanyDetailPage />} />
+        <Route path="/companies/:companyId/interest" element={<RegisterInterestPage />} />
         <Route path="/marketplace" element={<MarketplacePage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>

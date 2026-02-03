@@ -7,15 +7,16 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { cn, formatNumber } from '@/lib/utils'
 import { Header } from '@/components/Header'
+import { companyLogos, DefaultCompanyLogo } from '@/components/CompanyLogos'
 
 const tabs = ['Alle', 'Kjøp', 'Salg', 'Mine']
 
 const marketInterests = [
   {
     id: '1',
+    companyId: '1',
     company: 'TechStart AS',
-    logo: '🚀',
-    type: 'buy',
+    type: 'buy' as const,
     shares: 200,
     priceRange: { min: 400, max: 500 },
     time: '2t',
@@ -23,9 +24,9 @@ const marketInterests = [
   },
   {
     id: '2',
+    companyId: '3',
     company: 'Nordic FinTech',
-    logo: '💳',
-    type: 'sell',
+    type: 'sell' as const,
     shares: 150,
     priceRange: { min: 600, max: 700 },
     time: '5t',
@@ -33,9 +34,9 @@ const marketInterests = [
   },
   {
     id: '3',
+    companyId: '2',
     company: 'GreenEnergy Norge',
-    logo: '🌱',
-    type: 'buy',
+    type: 'buy' as const,
     shares: 500,
     priceRange: { min: 250, max: 300 },
     time: '1d',
@@ -43,9 +44,9 @@ const marketInterests = [
   },
   {
     id: '4',
+    companyId: '5',
     company: 'HealthTech Nordic',
-    logo: '🏥',
-    type: 'sell',
+    type: 'sell' as const,
     shares: 100,
     priceRange: { min: 800, max: 900 },
     time: '2d',
@@ -53,9 +54,9 @@ const marketInterests = [
   },
   {
     id: '5',
+    companyId: '4',
     company: 'Seafood Innovation',
-    logo: '🐟',
-    type: 'buy',
+    type: 'buy' as const,
     shares: 300,
     priceRange: { min: 350, max: 400 },
     time: '3d',
@@ -140,9 +141,14 @@ export function MarketplacePage() {
             className="w-full glass rounded-2xl p-4 text-left press-effect"
           >
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-slate-700/50 flex items-center justify-center text-2xl shrink-0">
-                {interest.logo}
-              </div>
+              {(() => {
+                const Logo = companyLogos[interest.companyId]
+                return Logo ? (
+                  <Logo className="w-12 h-12 shrink-0" />
+                ) : (
+                  <DefaultCompanyLogo className="w-12 h-12 shrink-0" initials={interest.company.slice(0, 2).toUpperCase()} />
+                )
+              })()}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
                   <h3 className="font-semibold truncate">{interest.company}</h3>

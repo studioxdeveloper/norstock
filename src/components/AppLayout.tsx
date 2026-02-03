@@ -32,7 +32,7 @@ export function AppLayout({ children }: AppLayoutProps) {
 
       {/* iOS-style floating tab bar */}
       <div className="fixed bottom-0 left-0 right-0 flex justify-center pb-[max(env(safe-area-inset-bottom),16px)] px-4 z-50">
-        <nav className="tab-bar-glass rounded-[22px] px-2 py-2 flex gap-1 shadow-2xl shadow-black/50">
+        <nav className="tab-bar-glass rounded-full px-2 py-2 flex gap-1 shadow-2xl shadow-black/50">
           {tabs.map((tab) => {
             const isActive = currentPath === tab.path
             const Icon = tab.icon
@@ -42,14 +42,14 @@ export function AppLayout({ children }: AppLayoutProps) {
                 key={tab.path}
                 onClick={() => navigate(tab.path)}
                 className={cn(
-                  'relative flex flex-col items-center justify-center px-5 py-2 rounded-[16px] transition-all duration-200 press-effect',
+                  'relative flex flex-col items-center justify-center px-5 py-2 rounded-full transition-all duration-200 press-effect',
                   isActive ? 'text-white' : 'text-slate-400'
                 )}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-brand-500/25 rounded-[16px]"
+                    className="absolute inset-0 bg-brand-500/25 rounded-full"
                     transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
                   />
                 )}

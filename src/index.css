@@ -25,6 +25,16 @@ body {
   overflow-x: hidden;
 }
 
+/* Center content with max-width for desktop */
+#root {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(180deg, #0a0f14 0%, #141c24 100%);
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.5);
+}
+
 /* iOS-style scrolling */
 .scroll-container {
   -webkit-overflow-scrolling: touch;

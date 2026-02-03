@@ -49,8 +49,8 @@ export function RegisterInterestPage() {
           >
             <CheckCircle2 className="w-10 h-10 text-accent-green" />
           </motion.div>
-          <h2 className="text-2xl font-bold mb-2">Interesse registrert!</h2>
-          <p className="text-slate-400">
+          <h2 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Interesse registrert!</h2>
+          <p className="text-slate-500 dark:text-slate-400">
             Du vil bli varslet når det er en match.
           </p>
         </motion.div>
@@ -62,7 +62,6 @@ export function RegisterInterestPage() {
     <div className="min-h-screen">
       <Header 
         title="Registrer interesse" 
-        subtitle={companyName}
         showBack 
       />
 
@@ -73,7 +72,7 @@ export function RegisterInterestPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <label className="block text-sm font-medium text-slate-300 mb-3">
+          <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">
             Type interesse
           </label>
           <div className="grid grid-cols-2 gap-3">
@@ -93,7 +92,7 @@ export function RegisterInterestPage() {
               )} />
               <span className={cn(
                 'font-semibold',
-                interestType === 'buy' ? 'text-brand-400' : 'text-slate-300'
+                interestType === 'buy' ? 'text-brand-500 dark:text-brand-400' : 'text-slate-600 dark:text-slate-300'
               )}>
                 Kjøp
               </span>
@@ -116,7 +115,7 @@ export function RegisterInterestPage() {
               )} />
               <span className={cn(
                 'font-semibold',
-                interestType === 'sell' ? 'text-brand-400' : 'text-slate-300'
+                interestType === 'sell' ? 'text-brand-500 dark:text-brand-400' : 'text-slate-600 dark:text-slate-300'
               )}>
                 Salg
               </span>
@@ -131,7 +130,7 @@ export function RegisterInterestPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <label className="block text-sm font-medium text-slate-300 mb-3">
+          <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">
             Antall aksjer
           </label>
           <input
@@ -139,7 +138,7 @@ export function RegisterInterestPage() {
             value={shares}
             onChange={(e) => setShares(e.target.value)}
             placeholder="F.eks. 100"
-            className="w-full glass rounded-2xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-brand-500/50"
+            className="w-full glass rounded-2xl px-4 py-4 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:ring-brand-500/50"
             required
           />
         </motion.div>
@@ -147,7 +146,7 @@ export function RegisterInterestPage() {
         {/* Price per share - only for sell */}
         {interestType === 'sell' && (
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-3">
+            <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">
               Pris per aksje (valgfritt)
             </label>
             <input
@@ -155,7 +154,7 @@ export function RegisterInterestPage() {
               value={pricePerShare}
               onChange={(e) => setPricePerShare(e.target.value)}
               placeholder="F.eks. 150 kr"
-              className="w-full glass rounded-2xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-brand-500/50"
+              className="w-full glass rounded-2xl px-4 py-4 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:ring-brand-500/50"
             />
           </div>
         )}
@@ -166,7 +165,7 @@ export function RegisterInterestPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <label className="block text-sm font-medium text-slate-300 mb-3">
+          <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">
             Melding til selskapet (valgfritt)
           </label>
           <textarea
@@ -174,7 +173,7 @@ export function RegisterInterestPage() {
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Skriv en melding om din interesse, spørsmål eller kommentarer..."
             rows={4}
-            className="w-full glass rounded-2xl px-4 py-4 text-white placeholder:text-slate-500 focus:ring-2 focus:ring-brand-500/50 resize-none"
+            className="w-full glass rounded-2xl px-4 py-4 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:ring-brand-500/50 resize-none"
           />
         </motion.div>
 
@@ -186,9 +185,9 @@ export function RegisterInterestPage() {
           className="glass rounded-2xl p-4 flex gap-3"
         >
           <Info className="w-5 h-5 text-brand-400 shrink-0 mt-0.5" />
-          <div className="text-sm text-slate-400">
+          <div className="text-sm text-slate-500 dark:text-slate-400">
             <p className="mb-2">
-              <strong className="text-slate-300">Interesser er ikke bindende.</strong>
+              <strong className="text-slate-700 dark:text-slate-300">Interesser er ikke bindende.</strong>
             </p>
             <p>
               Når noen matcher din interesse vil du bli varslet. Begge parter må godta kontakt før identiteter avsløres.

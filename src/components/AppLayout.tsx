@@ -32,7 +32,7 @@ export function AppLayout({ children }: AppLayoutProps) {
 
       {/* iOS-style floating tab bar */}
       <div className="fixed bottom-0 left-0 right-0 flex justify-center pb-[max(env(safe-area-inset-bottom),16px)] px-4 z-50">
-        <nav className="tab-bar-glass rounded-full px-2 py-2 flex gap-1 shadow-2xl shadow-black/50">
+        <nav className="tab-bar-glass rounded-full p-0.5 flex gap-0.5 shadow-2xl shadow-black/50">
           {tabs.map((tab) => {
             const isActive = currentPath === tab.path
             const Icon = tab.icon
@@ -42,8 +42,8 @@ export function AppLayout({ children }: AppLayoutProps) {
                 key={tab.path}
                 onClick={() => navigate(tab.path)}
                 className={cn(
-                  'relative flex flex-col items-center justify-center px-5 py-2 rounded-full transition-all duration-200 press-effect',
-                  isActive ? 'text-white' : 'text-slate-400'
+                  'relative flex flex-col items-center justify-center gap-0.5 px-5 py-2 rounded-full transition-all duration-200 press-effect',
+                  isActive ? 'text-white' : 'text-slate-500 dark:text-slate-400'
                 )}
               >
                 {isActive && (
@@ -54,7 +54,7 @@ export function AppLayout({ children }: AppLayoutProps) {
                   />
                 )}
                 <Icon className={cn("w-5 h-5 relative z-10", isActive && "text-brand-400")} strokeWidth={isActive ? 2.5 : 2} />
-                <span className={cn("text-[10px] mt-1 font-medium relative z-10", isActive && "text-brand-400")}>{tab.label}</span>
+                <span className={cn("text-[10px] font-medium relative z-10", isActive && "text-brand-400")}>{tab.label}</span>
               </button>
             )
           })}

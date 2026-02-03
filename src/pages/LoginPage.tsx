@@ -25,10 +25,10 @@ export function LoginPage({ onLogin }: LoginPageProps) {
             alt="NorStock" 
             className="w-20 h-20 rounded-3xl mb-6 shadow-xl shadow-brand-500/30 mx-auto"
           />
-          <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-brand-600 to-brand-400 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
             NorStock
           </h1>
-          <p className="text-slate-400 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 text-lg">
             Unoterte aksjer – oversikt og matching
           </p>
         </motion.div>
@@ -113,8 +113,8 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                   <feature.icon className="w-5 h-5 text-brand-400" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-white text-sm">{feature.title}</h3>
-                  <p className="text-xs text-slate-400">{feature.desc}</p>
+                  <h3 className="font-semibold text-slate-900 dark:text-white text-sm">{feature.title}</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">{feature.desc}</p>
                 </div>
               </div>
             ))}
@@ -139,7 +139,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
 
           <button
             onClick={onLogin}
-            className="w-full glass text-white py-4 px-6 rounded-2xl font-medium flex items-center justify-center gap-2 press-effect"
+            className="w-full glass text-slate-900 dark:text-white py-4 px-6 rounded-2xl font-medium flex items-center justify-center gap-2 press-effect"
           >
             Utforsk som gjest
           </button>

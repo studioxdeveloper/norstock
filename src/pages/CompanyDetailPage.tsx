@@ -93,7 +93,7 @@ export function CompanyDetailPage() {
               'px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-all press-effect',
               isFollowing
                 ? 'bg-brand-500 text-white'
-                : 'glass text-white'
+                : 'glass text-slate-700 dark:text-white'
             )}
           >
             <Heart className={cn('w-4 h-4', isFollowing && 'fill-current')} />
@@ -109,9 +109,9 @@ export function CompanyDetailPage() {
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
               {companyData.verified && <BadgeCheck className="w-4 h-4 text-brand-400" />}
-              <span className="text-sm text-slate-400">{companyData.sector}</span>
+              <span className="text-sm text-slate-500 dark:text-slate-400">{companyData.sector}</span>
             </div>
-            <div className="flex items-center flex-wrap gap-x-4 gap-y-1 text-sm text-slate-400">
+            <div className="flex items-center flex-wrap gap-x-4 gap-y-1 text-sm text-slate-500 dark:text-slate-400">
               <span className="flex items-center gap-1">
                 <MapPin className="w-4 h-4" />
                 {companyData.location.city}
@@ -135,7 +135,7 @@ export function CompanyDetailPage() {
                 'px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all press-effect',
                 activeTab === tab
                   ? 'bg-brand-500 text-white'
-                  : 'glass text-slate-300'
+                  : 'glass text-slate-600 dark:text-slate-300'
               )}
             >
               {tab}
@@ -155,13 +155,13 @@ export function CompanyDetailPage() {
             >
               {/* Description */}
               <div className="glass rounded-2xl p-4">
-                <h3 className="font-semibold mb-2">Om selskapet</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">{companyData.description}</p>
+                <h3 className="font-semibold mb-2 text-slate-900 dark:text-white">Om selskapet</h3>
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{companyData.description}</p>
               </div>
 
               {/* Key figures */}
               <div className="glass rounded-2xl p-4">
-                <h3 className="font-semibold mb-4">Nøkkeltall</h3>
+                <h3 className="font-semibold mb-4 text-slate-900 dark:text-white">Nøkkeltall</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {[
                     { label: 'Omsetning', value: formatCurrency(companyData.revenue) },
@@ -171,9 +171,9 @@ export function CompanyDetailPage() {
                     { label: 'Stiftet', value: companyData.founded },
                     { label: 'Daglig leder', value: companyData.ceo },
                   ].map((item, i) => (
-                    <div key={i} className="bg-slate-800/50 rounded-xl p-3">
-                      <p className="text-xs text-slate-400 mb-1">{item.label}</p>
-                      <p className="font-semibold text-sm">{item.value}</p>
+                    <div key={i} className="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-3">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">{item.label}</p>
+                      <p className="font-semibold text-sm text-slate-900 dark:text-white">{item.value}</p>
                     </div>
                   ))}
                 </div>
@@ -181,42 +181,42 @@ export function CompanyDetailPage() {
 
               {/* Contact info */}
               <div className="glass rounded-2xl p-4">
-                <h3 className="font-semibold mb-4">Kontakt</h3>
+                <h3 className="font-semibold mb-4 text-slate-900 dark:text-white">Kontakt</h3>
                 <div className="space-y-3">
-                  <a href={`mailto:${companyData.contact.email}`} className="flex items-center gap-3 text-sm text-slate-300 hover:text-brand-400 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-slate-400" />
+                  <a href={`mailto:${companyData.contact.email}`} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/50 flex items-center justify-center">
+                      <Mail className="w-5 h-5 text-slate-500 dark:text-slate-400" />
                     </div>
                     <span>{companyData.contact.email}</span>
                   </a>
-                  <a href={`tel:${companyData.contact.phone}`} className="flex items-center gap-3 text-sm text-slate-300 hover:text-brand-400 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center">
-                      <Phone className="w-5 h-5 text-slate-400" />
+                  <a href={`tel:${companyData.contact.phone}`} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/50 flex items-center justify-center">
+                      <Phone className="w-5 h-5 text-slate-500 dark:text-slate-400" />
                     </div>
                     <span>{companyData.contact.phone}</span>
                   </a>
-                  <a href={`https://${companyData.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-slate-300 hover:text-brand-400 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center">
-                      <Globe className="w-5 h-5 text-slate-400" />
+                  <a href={`https://${companyData.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/50 flex items-center justify-center">
+                      <Globe className="w-5 h-5 text-slate-500 dark:text-slate-400" />
                     </div>
                     <span>{companyData.website}</span>
                   </a>
-                  <div className="flex items-center gap-3 text-sm text-slate-300">
-                    <div className="w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center">
-                      <Building2 className="w-5 h-5 text-slate-400" />
+                  <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/50 flex items-center justify-center">
+                      <Building2 className="w-5 h-5 text-slate-500 dark:text-slate-400" />
                     </div>
                     <span>{companyData.location.address}</span>
                   </div>
                 </div>
                 
                 {/* Social media */}
-                <div className="flex items-center gap-3 mt-4 pt-4 border-t border-white/5">
+                <div className="flex items-center gap-3 mt-4 pt-4 border-t border-slate-200 dark:border-white/5">
                   <span className="text-xs text-slate-500">Sosiale medier:</span>
-                  <a href={`https://linkedin.com/company/${companyData.socialMedia.linkedin}`} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-slate-800/50 flex items-center justify-center hover:bg-brand-500/20 transition-colors">
-                    <Linkedin className="w-4 h-4 text-slate-400" />
+                  <a href={`https://linkedin.com/company/${companyData.socialMedia.linkedin}`} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800/50 flex items-center justify-center hover:bg-brand-500/20 transition-colors">
+                    <Linkedin className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   </a>
-                  <a href={`https://twitter.com/${companyData.socialMedia.twitter}`} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-slate-800/50 flex items-center justify-center hover:bg-brand-500/20 transition-colors">
-                    <Twitter className="w-4 h-4 text-slate-400" />
+                  <a href={`https://twitter.com/${companyData.socialMedia.twitter}`} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800/50 flex items-center justify-center hover:bg-brand-500/20 transition-colors">
+                    <Twitter className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   </a>
                 </div>
               </div>
@@ -236,9 +236,9 @@ export function CompanyDetailPage() {
                   key={item.id}
                   className="w-full glass rounded-2xl p-4 text-left press-effect"
                 >
-                  <p className="text-xs text-brand-400 mb-1">{item.date}</p>
-                  <h3 className="font-semibold mb-2">{item.title}</h3>
-                  <p className="text-sm text-slate-400 line-clamp-2">{item.preview}</p>
+                  <p className="text-xs text-brand-500 dark:text-brand-400 mb-1">{item.date}</p>
+                  <h3 className="font-semibold mb-2 text-slate-900 dark:text-white">{item.title}</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">{item.preview}</p>
                 </button>
               ))}
             </motion.div>
@@ -266,8 +266,8 @@ export function CompanyDetailPage() {
                     className={cn(
                       'px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all press-effect',
                       selectedForumCategory === category
-                        ? 'bg-brand-500/20 text-brand-400 border border-brand-500/30'
-                        : 'bg-slate-800/50 text-slate-400'
+                        ? 'bg-brand-500/20 text-brand-500 dark:text-brand-400 border border-brand-500/30'
+                        : 'bg-slate-100 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400'
                     )}
                   >
                     {category}
@@ -286,25 +286,25 @@ export function CompanyDetailPage() {
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
-                            <p className="text-xs text-slate-400">@{post.author} · {post.time}</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">@{post.author} · {post.time}</p>
                             <span className={cn(
                               'px-2 py-0.5 rounded-full text-[10px] font-medium',
-                              post.category === 'Diskusjon' && 'bg-brand-500/20 text-brand-400',
+                              post.category === 'Diskusjon' && 'bg-brand-500/20 text-brand-500 dark:text-brand-400',
                               post.category === 'Analyse' && 'bg-accent-orange/20 text-accent-orange',
-                              post.category === 'Spørsmål' && 'bg-purple-500/20 text-purple-400',
+                              post.category === 'Spørsmål' && 'bg-purple-500/20 text-purple-500 dark:text-purple-400',
                               post.category === 'Nyheter' && 'bg-accent-green/20 text-accent-green',
                             )}>
                               {post.category}
                             </span>
                           </div>
-                          <h3 className="font-semibold mb-2">{post.title}</h3>
+                          <h3 className="font-semibold mb-2 text-slate-900 dark:text-white">{post.title}</h3>
                         </div>
-                        <ChevronRight className="w-5 h-5 text-slate-500 shrink-0" />
+                        <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 shrink-0" />
                       </div>
                     </button>
                     
                     {/* Stats and like button */}
-                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/5">
+                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-200 dark:border-white/5">
                       <div className="flex items-center gap-4 text-xs text-slate-500">
                         <span className="flex items-center gap-1">
                           <MessageSquare className="w-3.5 h-3.5" />
@@ -320,8 +320,8 @@ export function CompanyDetailPage() {
                         className={cn(
                           'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all press-effect',
                           isLiked
-                            ? 'bg-brand-500/20 text-brand-400'
-                            : 'bg-slate-800/50 text-slate-400'
+                            ? 'bg-brand-500/20 text-brand-500 dark:text-brand-400'
+                            : 'bg-slate-100 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400'
                         )}
                       >
                         <ThumbsUp className={cn('w-3.5 h-3.5', isLiked && 'fill-current')} />
@@ -333,7 +333,7 @@ export function CompanyDetailPage() {
               })}
               
               {filteredForumPosts.length === 0 && (
-                <div className="text-center py-8 text-slate-400 text-sm">
+                <div className="text-center py-8 text-slate-500 dark:text-slate-400 text-sm">
                   Ingen tråder i denne kategorien ennå
                 </div>
               )}
@@ -364,8 +364,8 @@ export function CompanyDetailPage() {
                     )}>
                       {interest.type === 'buy' ? 'Kjøpsinteresser' : 'Salgsinteresser'}
                     </p>
-                    <p className="text-2xl font-bold mb-2">{interest.count}</p>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">{interest.count}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
                       Snitt {interest.avgShares} aksjer<br />
                       kr {interest.priceRange}/aksje
                     </p>

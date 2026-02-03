@@ -83,7 +83,7 @@ export function MarketplacePage() {
 
   return (
     <div className="min-h-screen">
-      <Header title="Markedsplass" subtitle="Finn kjøpere og selgere" />
+      <Header title="Markedsplass" />
 
       <div className="px-4 py-4">
         {/* Stats */}
@@ -92,41 +92,53 @@ export function MarketplacePage() {
             <div className="flex items-center justify-center gap-1 text-accent-green mb-1">
               <ArrowUpRight className="w-4 h-4" />
             </div>
-            <p className="text-xl font-bold">{stats.totalBuy}</p>
-            <p className="text-xs text-slate-400">Kjøp</p>
+            <p className="text-xl font-bold text-slate-900 dark:text-white">{stats.totalBuy}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Kjøp</p>
           </div>
           <div className="glass rounded-2xl p-3 text-center">
             <div className="flex items-center justify-center gap-1 text-accent-red mb-1">
               <ArrowDownRight className="w-4 h-4" />
             </div>
-            <p className="text-xl font-bold">{stats.totalSell}</p>
-            <p className="text-xs text-slate-400">Salg</p>
+            <p className="text-xl font-bold text-slate-900 dark:text-white">{stats.totalSell}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Salg</p>
           </div>
           <div className="glass rounded-2xl p-3 text-center">
             <div className="flex items-center justify-center gap-1 text-brand-400 mb-1">
               <Sparkles className="w-4 h-4" />
             </div>
-            <p className="text-xl font-bold">{stats.matchesToday}</p>
-            <p className="text-xs text-slate-400">Matcher</p>
+            <p className="text-xl font-bold text-slate-900 dark:text-white">{stats.matchesToday}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Matcher</p>
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="flex gap-2 mb-4">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={cn(
-                'flex-1 py-2.5 rounded-xl text-sm font-medium transition-all press-effect',
-                activeTab === tab
-                  ? 'bg-brand-500 text-white'
-                  : 'glass text-slate-300'
-              )}
-            >
-              {tab}
-            </button>
-          ))}
+        {/* iOS Segmented Control */}
+        <div className="relative bg-slate-200/80 dark:bg-slate-800/80 rounded-xl p-1 mb-4">
+          {/* Sliding indicator */}
+          <motion.div
+            className="absolute top-1 bottom-1 bg-white dark:bg-slate-700 rounded-lg shadow-sm"
+            initial={false}
+            animate={{
+              left: `calc(${tabs.indexOf(activeTab) * (100 / tabs.length)}% + 4px)`,
+              width: `calc(${100 / tabs.length}% - 8px)`,
+            }}
+            transition={{ type: 'spring', bounce: 0.15, duration: 0.4 }}
+          />
+          <div className="relative flex">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={cn(
+                  'flex-1 py-2 text-sm font-medium transition-colors duration-200 relative z-10',
+                  activeTab === tab
+                    ? 'text-slate-900 dark:text-white'
+                    : 'text-slate-500 dark:text-slate-400'
+                )}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Interests list */}
@@ -151,7 +163,7 @@ export function MarketplacePage() {
               })()}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-semibold truncate">{interest.company}</h3>
+                  <h3 className="font-semibold truncate text-slate-900 dark:text-white">{interest.company}</h3>
                   <span className={cn(
                     'px-2 py-0.5 rounded-full text-xs font-medium',
                     interest.type === 'buy' 
@@ -161,7 +173,7 @@ export function MarketplacePage() {
                     {interest.type === 'buy' ? 'KJØP' : 'SALG'}
                   </span>
                 </div>
-                <p className="text-sm text-slate-300 mb-2">
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
                   {formatNumber(interest.shares)} aksjer · kr {interest.priceRange.min}-{interest.priceRange.max}/aksje
                 </p>
                 <div className="flex items-center gap-4 text-xs text-slate-500">
@@ -170,14 +182,14 @@ export function MarketplacePage() {
                     {interest.time}
                   </span>
                   {interest.matches > 0 && (
-                    <span className="flex items-center gap-1 text-brand-400">
+                    <span className="flex items-center gap-1 text-brand-500 dark:text-brand-400">
                       <Users className="w-3.5 h-3.5" />
                       {interest.matches} matcher
                     </span>
                   )}
                 </div>
               </div>
-              <ChevronRight className="w-5 h-5 text-slate-500 shrink-0" />
+              <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500 shrink-0" />
             </div>
           </motion.button>
         ))}

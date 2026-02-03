@@ -34,10 +34,9 @@ export function PortfolioPage() {
     <div className="min-h-screen">
       <Header 
         title="Din portefølje" 
-        subtitle="God morgen"
         rightAction={
           <button className="w-10 h-10 rounded-full glass flex items-center justify-center press-effect relative">
-            <Bell className="w-5 h-5" />
+            <Bell className="w-5 h-5 text-slate-600 dark:text-white" />
             <span className="absolute top-2 right-2 w-2 h-2 bg-brand-500 rounded-full" />
           </button>
         }
@@ -51,9 +50,9 @@ export function PortfolioPage() {
           transition={{ delay: 0.1 }}
           className="glass rounded-3xl p-6 mb-6"
         >
-          <p className="text-slate-400 text-sm mb-1">Total verdi</p>
+          <p className="text-slate-500 dark:text-slate-400 text-sm mb-1">Total verdi</p>
           <div className="flex items-end gap-3 mb-4">
-            <span className="text-4xl font-bold">{formatCurrency(portfolioSummary.totalValue)}</span>
+            <span className="text-4xl font-bold text-slate-900 dark:text-white">{formatCurrency(portfolioSummary.totalValue)}</span>
           </div>
           <div className={cn(
             'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium',
@@ -78,8 +77,8 @@ export function PortfolioPage() {
           className="mb-6"
         >
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold">Mine aksjer</h2>
-            <button className="text-brand-400 text-sm font-medium flex items-center gap-1 press-effect">
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Mine aksjer</h2>
+            <button className="text-brand-500 dark:text-brand-400 text-sm font-medium flex items-center gap-1 press-effect">
               <Plus className="w-4 h-4" />
               Legg til
             </button>
@@ -104,11 +103,11 @@ export function PortfolioPage() {
                   )
                 })()}
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold truncate">{holding.name}</h3>
-                  <p className="text-sm text-slate-400">{formatNumber(holding.shares)} aksjer</p>
+                  <h3 className="font-semibold truncate text-slate-900 dark:text-white">{holding.name}</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{formatNumber(holding.shares)} aksjer</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-semibold">{formatCurrency(holding.value)}</p>
+                  <p className="font-semibold text-slate-900 dark:text-white">{formatCurrency(holding.value)}</p>
                   <p className={cn(
                     'text-sm flex items-center justify-end gap-0.5',
                     holding.change >= 0 ? 'text-accent-green' : 'text-accent-red'
@@ -121,7 +120,7 @@ export function PortfolioPage() {
                     {formatPercentage(holding.change)}
                   </p>
                 </div>
-                <ChevronRight className="w-5 h-5 text-slate-500" />
+                <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-500" />
               </motion.button>
             ))}
           </div>
@@ -133,7 +132,7 @@ export function PortfolioPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <h2 className="text-lg font-semibold mb-4">Siste aktivitet</h2>
+          <h2 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Siste aktivitet</h2>
           <div className="space-y-3">
             {recentActivity.map((activity, i) => (
               <div
@@ -154,10 +153,10 @@ export function PortfolioPage() {
                   )} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-slate-400">{activity.company}</p>
-                  <p className="font-medium truncate">{activity.title}</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{activity.company}</p>
+                  <p className="font-medium truncate text-slate-900 dark:text-white">{activity.title}</p>
                 </div>
-                <span className="text-xs text-slate-500">{activity.time}</span>
+                <span className="text-xs text-slate-400 dark:text-slate-500">{activity.time}</span>
               </div>
             ))}
           </div>

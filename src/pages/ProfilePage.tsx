@@ -1,8 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { 
   User, Settings, Bell, Shield, HelpCircle, LogOut,
-  ChevronRight, Moon, Sun, Monitor, Globe, FileText, Heart, Check, X
+  ChevronRight, Moon, Sun, Monitor, Globe, FileText, Heart, Check, X,
+  Building2
 } from 'lucide-react'
 import { Header } from '@/components/Header'
 import { useTheme } from '@/contexts/ThemeContext'
@@ -25,8 +27,12 @@ const themeOptions: { value: Theme; label: string; icon: typeof Moon }[] = [
 ]
 
 export function ProfilePage() {
+  const navigate = useNavigate()
   const { theme, setTheme, resolvedTheme } = useTheme()
   const [showThemeModal, setShowThemeModal] = useState(false)
+
+  // Mock: In production, this would come from auth/user context
+  const isCompanyAdmin = true
 
   const getThemeLabel = () => {
     switch (theme) {
@@ -37,6 +43,13 @@ export function ProfilePage() {
   }
 
   const menuSections = [
+    // Admin section - only shown for company admins
+    ...(isCompanyAdmin ? [{
+      title: 'Selskapsadmin',
+      items: [
+        { icon: Building2, label: 'Administrer selskap', badge: 'TechStart AS', action: () => navigate('/admin/company') },
+      ],
+    }] : []),
     {
       title: 'Konto',
       items: [

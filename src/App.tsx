@@ -8,6 +8,7 @@ import { CompanyDetailPage } from './pages/CompanyDetailPage'
 import { MarketplacePage } from './pages/MarketplacePage'
 import { ProfilePage } from './pages/ProfilePage'
 import { RegisterInterestPage } from './pages/RegisterInterestPage'
+import { CompanyAdminPage } from './pages/CompanyAdminPage'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -17,17 +18,25 @@ function App() {
   }
 
   return (
-    <AppLayout>
-      <Routes>
-        <Route path="/" element={<Navigate to="/portfolio" replace />} />
-        <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/companies" element={<CompaniesPage />} />
-        <Route path="/companies/:id" element={<CompanyDetailPage />} />
-        <Route path="/companies/:companyId/interest" element={<RegisterInterestPage />} />
-        <Route path="/marketplace" element={<MarketplacePage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-      </Routes>
-    </AppLayout>
+    <Routes>
+      {/* Admin routes (outside AppLayout) */}
+      <Route path="/admin/company" element={<CompanyAdminPage />} />
+      
+      {/* Main app routes */}
+      <Route path="*" element={
+        <AppLayout>
+          <Routes>
+            <Route path="/" element={<Navigate to="/portfolio" replace />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/companies" element={<CompaniesPage />} />
+            <Route path="/companies/:id" element={<CompanyDetailPage />} />
+            <Route path="/companies/:companyId/interest" element={<RegisterInterestPage />} />
+            <Route path="/marketplace" element={<MarketplacePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+          </Routes>
+        </AppLayout>
+      } />
+    </Routes>
   )
 }
 
